@@ -46,16 +46,17 @@ class Circle(Figure):
         return f'{self.__class__.__name__} radius={self.radius} perimeter={self.perimeter()} area={self.area()}'
 
 
-@ensure('side_length', (check_int, check_positive))
+@ensure('coords', (check_int, check_positive))
 class Square(Figure):
-    def __init__(self, side_length: int):
-        self.side_length = side_length
+    apophema = 0 #TODO
+    def __init__(self, *coords):
+        self.coords = coords
 
     def perimeter(self):
-        return 4 * self.side_length
+        return sum[(coord[0]**2 + coords[1]**2) ** 0.5 for coord in coords]
 
     def area(self):
-        return self.side_length * self.side_length
+        return self.perimeter()/2*apophema
     
     def __str__(self) -> str:
         return f'{self.__class__.__name__} radius={self.side_length} perimeter={self.perimeter()} area={self.area()}'
